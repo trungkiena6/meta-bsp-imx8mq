@@ -1,7 +1,7 @@
-From 059c784b97a8bcece72f9d0c06c1a23dbf4e9d2c Mon Sep 17 00:00:00 2001
+From db0797ab6f2346faf21dedcabec525aace996f46 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 21 Jun 2019 13:51:31 +0300
-Subject: [PATCH 18/18] cl-som-imx8: dts: m4: Added sbc-imx8-m4 file
+Subject: [PATCH 19/34] cl-som-imx8: dts: m4: Added sbc-imx8-m4 file
 
 Added a separate file for m4 pingpong demo.
 
@@ -26,7 +26,7 @@ index 09460fb..c736532 100644
  subdir-y	:= $(dts-dirs)
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-m4.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-m4.dts
 new file mode 100644
-index 0000000..dec5824
+index 00000000..dec5824
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-m4.dts
 @@ -0,0 +1,45 @@

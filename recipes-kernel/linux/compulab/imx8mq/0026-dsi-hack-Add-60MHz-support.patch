@@ -1,0 +1,53 @@
+From f949eb716fc28b4b5700256e968d7ee871984645 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Mon, 2 Sep 2019 14:56:16 +0300
+Subject: [PATCH 26/34] dsi: hack: Add 60MHz support
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ drivers/gpu/drm/bridge/nwl-dsi.c  | 1 +
+ drivers/gpu/drm/mxsfb/mxsfb_drv.c | 2 +-
+ drivers/gpu/imx/dcss/dcss-dtg.c   | 2 +-
+ 3 files changed, 3 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/nwl-dsi.c b/drivers/gpu/drm/bridge/nwl-dsi.c
+index d567ce7..e5a2ea9 100644
+--- a/drivers/gpu/drm/bridge/nwl-dsi.c
++++ b/drivers/gpu/drm/bridge/nwl-dsi.c
+@@ -163,6 +163,7 @@
+ 	132000,
+ 	108000,
+ 	74250,
++	60000,
+ 	49500,
+ 	31500,
+ };
+diff --git a/drivers/gpu/drm/mxsfb/mxsfb_drv.c b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+index f5a4295..adcd49f 100644
+--- a/drivers/gpu/drm/mxsfb/mxsfb_drv.c
++++ b/drivers/gpu/drm/mxsfb/mxsfb_drv.c
+@@ -51,7 +51,7 @@
+ /* Maximum Video PLL frequency */
+ #define MAX_PLL_FREQ 1200000000
+ /* Mininum pixel clock in Hz */
+-#define MIN_PIX_CLK  74250000
++#define MIN_PIX_CLK  0
+ enum mxsfb_devtype {
+ 	MXSFB_V3,
+ 	MXSFB_V4,
+diff --git a/drivers/gpu/imx/dcss/dcss-dtg.c b/drivers/gpu/imx/dcss/dcss-dtg.c
+index d84cccb..e30fd9d 100644
+--- a/drivers/gpu/imx/dcss/dcss-dtg.c
++++ b/drivers/gpu/imx/dcss/dcss-dtg.c
+@@ -93,7 +93,7 @@
+ /* Maximum Video PLL frequency */
+ #define MAX_PLL_FREQ 1200000000
+ /* Mininum pixel clock in kHz */
+-#define MIN_PIX_CLK 74250
++#define MIN_PIX_CLK 0
+ 
+ static struct dcss_debug_reg dtg_debug_reg[] = {
+ 	DCSS_DBG_REG(DCSS_DTG_TC_CONTROL_STATUS),
+-- 
+1.9.1
+

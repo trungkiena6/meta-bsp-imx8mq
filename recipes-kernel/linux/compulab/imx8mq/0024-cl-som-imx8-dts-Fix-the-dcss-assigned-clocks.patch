@@ -1,7 +1,7 @@
-From 907e1cbae2f82ffb197de46b02d1bcf49d2fa8a4 Mon Sep 17 00:00:00 2001
+From 77ab228140e158f65e7b9f866e55eaa0ffa6278e Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 23 Aug 2019 10:11:12 +0300
-Subject: [PATCH 23/23] cl-som-imx8: dts: Fix the dcss assigned clocks
+Subject: [PATCH 24/34] cl-som-imx8: dts: Fix the dcss assigned clocks
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

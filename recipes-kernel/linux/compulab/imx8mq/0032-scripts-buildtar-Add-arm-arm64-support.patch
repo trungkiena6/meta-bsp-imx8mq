@@ -1,0 +1,32 @@
+From 25ba4f3630f0711e635ee553bc4371e5d8b46e18 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Wed, 18 Sep 2019 16:48:55 +0300
+Subject: [PATCH 32/34] scripts: buildtar: Add arm/arm64 support
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ scripts/package/buildtar | 8 ++++++++
+ 1 file changed, 8 insertions(+)
+
+diff --git a/scripts/package/buildtar b/scripts/package/buildtar
+index d624a07..4b4d9d3 100755
+--- a/scripts/package/buildtar
++++ b/scripts/package/buildtar
+@@ -74,6 +74,14 @@ cp -v -- "${objtree}/vmlinux" "${tmpdir}/boot/vmlinux-${KERNELRELEASE}"
+ # Install arch-specific kernel image(s)
+ #
+ case "${ARCH}" in
++	arm|arm64)
++		rm -rf "${tmpdir}/boot/vmlinux-${KERNELRELEASE}"
++		[ -f "${objtree}/arch/${ARCH}/boot/Image" ] && cp -v -- "${objtree}/arch/${ARCH}/boot/Image" "${tmpdir}/boot/Image-${KERNELRELEASE}"
++		[ -f "${tmpdir}/boot/Image-${KERNELRELEASE}" ] && ln -s Image-${KERNELRELEASE} "${tmpdir}/boot/Image"
++		[ -f "${objtree}/arch/${ARCH}/boot/zImage" ] && cp -v -- "${objtree}/arch/${ARCH}/boot/zImage" "${tmpdir}/boot/zImage-${KERNELRELEASE}"
++		[ -f "${tmpdir}/boot/zImage-${KERNELRELEASE}" ] && ln -s Image-${KERNELRELEASE} "${tmpdir}/boot/zImage"
++		[ -d "${objtree}/arch/${ARCH}/boot/dts/compulab" ] && cp -v -- ${objtree}/arch/${ARCH}/boot/dts/compulab/*.dtb ${tmpdir}/boot/
++		;;
+ 	x86|i386|x86_64)
+ 		[ -f "${objtree}/arch/x86/boot/bzImage" ] && cp -v -- "${objtree}/arch/x86/boot/bzImage" "${tmpdir}/boot/vmlinuz-${KERNELRELEASE}"
+ 		;;
+-- 
+1.9.1
+

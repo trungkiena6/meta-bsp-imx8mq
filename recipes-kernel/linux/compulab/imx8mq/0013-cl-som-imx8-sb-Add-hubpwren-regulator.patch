@@ -1,7 +1,7 @@
-From aaca50bf92786fb57de7bc763fff9cf49482f357 Mon Sep 17 00:00:00 2001
+From 628ac6b7f27bd6d8bf10313bae529334cfb8be7c Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 7 Apr 2019 17:31:48 +0300
-Subject: [PATCH 13/15] cl-som-imx8: sb: Add hubpwren regulator
+Subject: [PATCH 13/34] cl-som-imx8: sb: Add hubpwren regulator
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

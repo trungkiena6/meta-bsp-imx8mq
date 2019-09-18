@@ -1,7 +1,7 @@
-From 79c1619c28223336ea78940c2e8d0580056236c5 Mon Sep 17 00:00:00 2001
+From 1bd91a3e57f57a60eb84a36346452ce90a5fc33e Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 21 Jul 2019 17:17:41 +0300
-Subject: [PATCH 19/20] cl-som-imx8: dts: Change mipi-dcss clock settings
+Subject: [PATCH 20/34] cl-som-imx8: dts: Change mipi-dcss clock settings
 
 Change mipi-dcss clock settings.
 To be validated as soon as LVDS port gets availabel.

@@ -1,7 +1,7 @@
-From 8a88560f124259725f74c31725f4e5b741d69ef1 Mon Sep 17 00:00:00 2001
+From b0494d953f9835e68f23da8ea9419e19c58ad4ca Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 23 Aug 2019 09:00:34 +0300
-Subject: [PATCH 22/23] cl-som-imx8: dts: Changed sn65dsi83 clock to a
+Subject: [PATCH 23/34] cl-som-imx8: dts: Changed sn65dsi83 clock to a
  supported 74250 one.
 
 Required in order to pass the nwl_dsi_bridge_mode_valid() validation

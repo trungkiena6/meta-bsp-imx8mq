@@ -1,7 +1,7 @@
-From 1604265f856e00a39e5799c072976c8196b7c28d Mon Sep 17 00:00:00 2001
+From ac3fb680b9df0e426888bec737ebd0c9f21e5038 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 21 Jun 2019 13:50:25 +0300
-Subject: [PATCH 17/18] cl-som-imx8: rmpms: Removed the rpmsg pingpong area
+Subject: [PATCH 18/34] cl-som-imx8: rmpms: Removed the rpmsg pingpong area
 
 Removed the rpmsg pingpong area.
 A separate file will be created for m4 pingpong demo.

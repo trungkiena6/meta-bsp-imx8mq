@@ -1,7 +1,7 @@
-From c4bd4c644e5831082f5fe538213ca9227ecc920b Mon Sep 17 00:00:00 2001
+From 404e8030fa310c3469d9487d85da1dd2465aaa6f Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 5 Apr 2019 19:58:37 +0300
-Subject: [PATCH 11/15] cl-som-imx8: dts: Add a non-edid dts file
+Subject: [PATCH 11/34] cl-som-imx8: dts: Add a non-edid dts file
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -24,7 +24,7 @@ index 764c812..09460fb 100644
  subdir-y	:= $(dts-dirs)
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-no-edid.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-no-edid.dts
 new file mode 100644
-index 0000000..ab1fea4
+index 00000000..ab1fea4
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-no-edid.dts
 @@ -0,0 +1,20 @@

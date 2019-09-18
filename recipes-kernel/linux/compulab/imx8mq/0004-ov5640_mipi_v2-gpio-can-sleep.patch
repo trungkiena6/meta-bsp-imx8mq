@@ -1,7 +1,7 @@
-From f264a3bd0e1fe83e9c9deb1738bb6dd6806c458a Mon Sep 17 00:00:00 2001
+From 3f13f57d7afd46445c4fa0f19b5d0714b611d62a Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sat, 16 Feb 2019 13:18:00 +0200
-Subject: [PATCH 04/15] ov5640_mipi_v2: gpio can sleep
+Subject: [PATCH 04/34] ov5640_mipi_v2: gpio can sleep
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
  1 file changed, 5 insertions(+), 5 deletions(-)
 
 diff --git a/drivers/media/platform/mxc/capture/ov5640_mipi_v2.c b/drivers/media/platform/mxc/capture/ov5640_mipi_v2.c
-index d681863..3ad0371 100644
+index bc42477..86d1b28 100644
 --- a/drivers/media/platform/mxc/capture/ov5640_mipi_v2.c
 +++ b/drivers/media/platform/mxc/capture/ov5640_mipi_v2.c
 @@ -536,19 +536,19 @@ static void ov5640_reset(struct ov5640 *sensor)

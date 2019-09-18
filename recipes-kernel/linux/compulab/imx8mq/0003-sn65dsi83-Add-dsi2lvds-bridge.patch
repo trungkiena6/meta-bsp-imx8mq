@@ -1,7 +1,7 @@
-From a2fb3dc53216fcaddd6a6ce5e2efcb84bdafde6f Mon Sep 17 00:00:00 2001
+From e2350fcd5a7dca081f4034fe9d2450d26b95e0df Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sat, 16 Feb 2019 13:16:46 +0200
-Subject: [PATCH 03/15] sn65dsi83: Add dsi2lvds bridge
+Subject: [PATCH 03/34] sn65dsi83: Add dsi2lvds bridge
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -22,10 +22,10 @@ Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
  create mode 100644 drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_timing.h
 
 diff --git a/drivers/gpu/drm/bridge/Kconfig b/drivers/gpu/drm/bridge/Kconfig
-index 593e9a4..339fccd 100644
+index 4bbf5e2..001122a 100644
 --- a/drivers/gpu/drm/bridge/Kconfig
 +++ b/drivers/gpu/drm/bridge/Kconfig
-@@ -134,4 +134,6 @@ config DRM_ITE_IT6263
+@@ -157,4 +157,6 @@ config DRM_ITE_IT6263
  	---help---
  	  ITE IT6263 bridge chip driver.
  
@@ -33,17 +33,17 @@ index 593e9a4..339fccd 100644
 +
  endmenu
 diff --git a/drivers/gpu/drm/bridge/Makefile b/drivers/gpu/drm/bridge/Makefile
-index d684dce..cd84c88 100644
+index 97d8269..aec9268 100644
 --- a/drivers/gpu/drm/bridge/Makefile
 +++ b/drivers/gpu/drm/bridge/Makefile
-@@ -16,3 +16,4 @@ obj-$(CONFIG_DRM_ITE_IT6263) += it6263.o
+@@ -18,3 +18,4 @@ obj-y += synopsys/
  obj-$(CONFIG_DRM_NWL_DSI) += nwl-dsi.o
  obj-$(CONFIG_DRM_SEC_MIPI_DSIM) += sec-dsim.o
- obj-$(CONFIG_DRM_NXP_SEIKO_43WVFIG) += nxp-seiko-43wvfig.o
+ obj-$(CONFIG_DRM_ITE_IT6263) += it6263.o
 +obj-$(CONFIG_DRM_I2C_SN65DSI83) += sn65dsi83/
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/Kconfig b/drivers/gpu/drm/bridge/sn65dsi83/Kconfig
 new file mode 100644
-index 0000000..1d8f37f
+index 00000000..1d8f37f
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/Kconfig
 @@ -0,0 +1,7 @@
@@ -56,7 +56,7 @@ index 0000000..1d8f37f
 +	  Support for the sn65dsi83 MIPI DSI to LVDS bridge
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/Makefile b/drivers/gpu/drm/bridge/sn65dsi83/Makefile
 new file mode 100644
-index 0000000..dee7f49
+index 00000000..dee7f49
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/Makefile
 @@ -0,0 +1,2 @@
@@ -64,7 +64,7 @@ index 0000000..dee7f49
 +obj-$(CONFIG_DRM_I2C_SN65DSI83) := sn65dsi83.o
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c
 new file mode 100644
-index 0000000..f4a7713
+index 00000000..f4a7713
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c
 @@ -0,0 +1,388 @@
@@ -458,7 +458,7 @@ index 0000000..f4a7713
 +}
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.h b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.h
 new file mode 100644
-index 0000000..9f23df8
+index 00000000..9f23df8
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.h
 @@ -0,0 +1,55 @@
@@ -519,7 +519,7 @@ index 0000000..9f23df8
 +#endif /* _SN65DSI83_BRG_H__ */
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c
 new file mode 100644
-index 0000000..d3459cf
+index 00000000..d3459cf
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c
 @@ -0,0 +1,411 @@
@@ -936,7 +936,7 @@ index 0000000..d3459cf
 +MODULE_LICENSE("GPL");
 diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_timing.h b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_timing.h
 new file mode 100644
-index 0000000..e9bb663
+index 00000000..e9bb663
 --- /dev/null
 +++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_timing.h
 @@ -0,0 +1,33 @@

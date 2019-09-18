@@ -1,7 +1,7 @@
-From 49c3df91801f37468c60a13074464627ad7a5cdd Mon Sep 17 00:00:00 2001
+From 9c9c1d3af2376aa0a381f682a599dafde24d7c43 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Mon, 18 Mar 2019 12:07:18 +0200
-Subject: [PATCH 06/15] cl-som-imx8: Simple Sound Support
+Subject: [PATCH 06/34] cl-som-imx8: Simple Sound Support
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

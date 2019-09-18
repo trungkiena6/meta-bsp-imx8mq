@@ -1,7 +1,7 @@
-From 55d3d04bde42d9e1e10980752c9aabbee90c275f Mon Sep 17 00:00:00 2001
+From 95ca7624ae65126dcf36dc905fe86b92f92fd716 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Thu, 21 Mar 2019 19:17:07 +0200
-Subject: [PATCH 08/15] cl-som-imx8: defconfig: Update defconfig
+Subject: [PATCH 08/34] cl-som-imx8: defconfig: Update defconfig
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

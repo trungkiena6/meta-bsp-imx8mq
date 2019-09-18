@@ -15,14 +15,24 @@ SRC_URI_append_cl-som-imx8 = " \
 	file://0013-cl-som-imx8-sb-Add-hubpwren-regulator.patch \
 	file://0014-cl-som-imx8-defconfig-Update-defconfig.patch \
 	file://0015-cl-som-imx8-defconfig-Enable-wm8731-with-sdma-as-a-m.patch \
-	file://0016-cl-som-imx8-Remove-unused-dvfs-regulator.patch \
-	file://0017-cl-som-imx8-rmpms-Removed-the-rpmsg-pingpong-area.patch \
-	file://0018-cl-som-imx8-dts-m4-Added-sbc-imx8-m4-file.patch \
-	file://0019-cl-som-imx8-dts-Change-mipi-dcss-clock-settings.patch \
-	file://0020-cl-som-imx8-defconfig-Update-config.patch \
-	file://0021-cl-som-imx8-dts-Fix-the-csi-assigned-clock-rate.patch \
-	file://0022-cl-som-imx8-dts-Changed-sn65dsi83-clock-to-a-support.patch \
-	file://0023-cl-som-imx8-dts-Fix-the-dcss-assigned-clocks.patch \
-	file://0024-cl-som-imx8-dts-Increase-lcdif-max-res-to-1920x1200.patch \
+	file://0016-cl-som-imx8-defconfig-Set-local-version-2.0.patch \
+	file://0017-cl-som-imx8-Remove-unused-dvfs-regulator.patch \
+	file://0018-cl-som-imx8-rmpms-Removed-the-rpmsg-pingpong-area.patch \
+	file://0019-cl-som-imx8-dts-m4-Added-sbc-imx8-m4-file.patch \
+	file://0020-cl-som-imx8-dts-Change-mipi-dcss-clock-settings.patch \
+	file://0021-cl-som-imx8-defconfig-Update-config.patch \
+	file://0022-cl-som-imx8-dts-Fix-the-csi-assigned-clock-rate.patch \
+	file://0023-cl-som-imx8-dts-Changed-sn65dsi83-clock-to-a-support.patch \
+	file://0024-cl-som-imx8-dts-Fix-the-dcss-assigned-clocks.patch \
+	file://0025-cl-som-imx8-dts-Increase-lcdif-max-res-to-1920x1200.patch \
+	file://0026-dsi-hack-Add-60MHz-support.patch \
+	file://0027-sn65dsi83-Add-burts-sync-option-switch.patch \
+	file://0028-sn65dsi83-Add-panel-enable-option.patch \
+	file://0029-sn65dsi83-Refactoring-with-respect-to-datasheet.patch \
+	file://0030-cl-som-imx8-dts-lvds-Add-chimei-panel-support.patch \
+	file://0031-cl-som-imx8-lvds-viavi-Add-viavi-panel-support.patch \
+	file://0032-scripts-buildtar-Add-arm-arm64-support.patch \
+	file://0033-cl-som-imx8-defconfig-Update-defconfig.patch \
+	file://0034-cl-som-imx8-Add-4.19.35-support.patch \
 	file://defconfig \
 "

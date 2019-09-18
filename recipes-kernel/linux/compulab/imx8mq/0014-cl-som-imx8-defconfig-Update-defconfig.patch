@@ -1,7 +1,7 @@
-From b8867d2476bb038c7279a87f4ee598d489192a38 Mon Sep 17 00:00:00 2001
+From be2fd04388b4375fb52129fdf4848d356f48a570 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 7 Apr 2019 18:55:22 +0300
-Subject: [PATCH 14/15] cl-som-imx8: defconfig: Update defconfig
+Subject: [PATCH 14/34] cl-som-imx8: defconfig: Update defconfig
 
 Enable the options that were removed by cleanup by mistake.
 

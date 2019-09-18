@@ -1,7 +1,7 @@
-From a2adbcc9f7585c0845b50cb90910d1a349f52388 Mon Sep 17 00:00:00 2001
+From 949bc01a5d3815d432aff5aa387509fd0b01351e Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Tue, 11 Jun 2019 17:11:09 +0300
-Subject: [PATCH 16/16] cl-som-imx8: Remove unused dvfs regulator
+Subject: [PATCH 17/34] cl-som-imx8: Remove unused dvfs regulator
 
 It is not implemented on this module.
 

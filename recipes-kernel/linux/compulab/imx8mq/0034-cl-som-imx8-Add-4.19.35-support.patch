@@ -1,0 +1,80 @@
+From 77ebeaf081a5c490610a407b680d0d15d1e06a0f Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Wed, 18 Sep 2019 23:55:24 +0300
+Subject: [PATCH 34/34] cl-som-imx8: Add 4.19.35 support
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi | 8 --------
+ drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c  | 8 ++++----
+ 2 files changed, 4 insertions(+), 12 deletions(-)
+
+diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+index b482598..0683837 100644
+--- a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
++++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
+@@ -581,10 +581,6 @@
+ 	status = "okay";
+ };
+ 
+-&usb3_0 {
+-	status = "okay";
+-};
+-
+ &usb_dwc3_0 {
+ 	status = "okay";
+ 	dr_mode = "host";
+@@ -594,10 +590,6 @@
+ 	status = "okay";
+ };
+ 
+-&usb3_1 {
+-	status = "okay";
+-};
+-
+ &usb_dwc3_1 {
+ 	status = "okay";
+ 	dr_mode = "host";
+diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c
+index f963f46..fb8a9fe 100644
+--- a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c
++++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_drv.c
+@@ -67,7 +67,7 @@ static int sn65dsi83_connector_get_modes(struct drm_connector *connector)
+     mode->type = DRM_MODE_TYPE_DRIVER | DRM_MODE_TYPE_PREFERRED;
+ 
+     drm_mode_probed_add(connector, mode);
+-    drm_mode_connector_list_update(connector);
++    drm_connector_list_update(connector);
+ 
+     connector->display_info.width_mm = mode->width_mm;
+     connector->display_info.height_mm = mode->height_mm;
+@@ -188,7 +188,7 @@ static int sn65dsi83_bridge_attach(struct drm_bridge *bridge)
+     }
+     drm_connector_helper_add(&sn65dsi83->connector,
+                  &sn65dsi83_connector_helper_funcs);
+-    drm_mode_connector_attach_encoder(&sn65dsi83->connector, bridge->encoder);
++    drm_connector_attach_encoder(&sn65dsi83->connector, bridge->encoder);
+ 
+     ret = sn65dsi83_attach_dsi(sn65dsi83);
+ 
+@@ -268,7 +268,7 @@ static int sn65dsi83_probe(struct i2c_client *i2c,
+ {
+     struct sn65dsi83 *sn65dsi83;
+     struct device *dev = &i2c->dev;
+-    int ret;
++    int ret = 0;
+ 
+     dev_info(dev,"%s\n",__func__);
+     if (!dev->of_node)
+@@ -304,7 +304,7 @@ static int sn65dsi83_probe(struct i2c_client *i2c,
+     sn65dsi83->bridge.funcs = &sn65dsi83_bridge_funcs;
+     sn65dsi83->bridge.of_node = dev->of_node;
+ 
+-    ret = drm_bridge_add(&sn65dsi83->bridge);
++    drm_bridge_add(&sn65dsi83->bridge);
+     if (ret) {
+         dev_err(dev, "failed to add sn65dsi83 bridge\n");
+     }
+-- 
+1.9.1
+

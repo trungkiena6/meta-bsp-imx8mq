@@ -1,7 +1,7 @@
-From c7729efdafbb464b9c4502fc0130c00e3bab2e11 Mon Sep 17 00:00:00 2001
+From ce3c9a9d83ad5a3d581f58e41efb5fbdd2cf3180 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sat, 16 Feb 2019 13:13:52 +0200
-Subject: [PATCH 00/15] cl-som-imx8: Add CompuLab device tree files
+Subject: [PATCH 00/34] cl-som-imx8: Add CompuLab device tree files
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -53,20 +53,20 @@ Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
  create mode 100644 arch/arm64/boot/dts/compulab/ucm-imx8.dts
 
 diff --git a/arch/arm64/boot/dts/Makefile b/arch/arm64/boot/dts/Makefile
-index c6684ab..34a8515 100644
+index 4690364..041ba4f 100644
 --- a/arch/arm64/boot/dts/Makefile
 +++ b/arch/arm64/boot/dts/Makefile
-@@ -9,6 +9,7 @@ dts-dirs += apm
- dts-dirs += arm
- dts-dirs += broadcom
- dts-dirs += cavium
-+dts-dirs += compulab
- dts-dirs += exynos
- dts-dirs += freescale
- dts-dirs += hisilicon
+@@ -9,6 +9,7 @@ subdir-y += apm
+ subdir-y += arm
+ subdir-y += broadcom
+ subdir-y += cavium
++subdir-y += compulab
+ subdir-y += exynos
+ subdir-y += freescale
+ subdir-y += hisilicon
 diff --git a/arch/arm64/boot/dts/compulab/Makefile b/arch/arm64/boot/dts/compulab/Makefile
 new file mode 100644
-index 0000000..b9cc045
+index 00000000..b9cc045
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/Makefile
 @@ -0,0 +1,16 @@
@@ -88,7 +88,7 @@ index 0000000..b9cc045
 +clean-files	:= *.dtb
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8-dual.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8-dual.dts
 new file mode 100644
-index 0000000..4d80029
+index 00000000..4d80029
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8-dual.dts
 @@ -0,0 +1,103 @@
@@ -197,7 +197,7 @@ index 0000000..4d80029
 +};
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8-ecspi.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8-ecspi.dts
 new file mode 100644
-index 0000000..a018088
+index 00000000..a018088
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8-ecspi.dts
 @@ -0,0 +1,149 @@
@@ -352,7 +352,7 @@ index 0000000..a018088
 +};
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-dcss.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-dcss.dts
 new file mode 100644
-index 0000000..037c51c
+index 00000000..037c51c
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-dcss.dts
 @@ -0,0 +1,16 @@
@@ -374,7 +374,7 @@ index 0000000..037c51c
 +#include "compulab-imx8mq-lvds-dcss.dtsi"
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-lcdif.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-lcdif.dts
 new file mode 100644
-index 0000000..5df3e0a
+index 00000000..5df3e0a
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8-lvds-lcdif.dts
 @@ -0,0 +1,24 @@
@@ -404,7 +404,7 @@ index 0000000..5df3e0a
 +};
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8-uarts.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8-uarts.dts
 new file mode 100644
-index 0000000..2fb963f
+index 00000000..2fb963f
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8-uarts.dts
 @@ -0,0 +1,73 @@
@@ -483,7 +483,7 @@ index 0000000..2fb963f
 +};
 diff --git a/arch/arm64/boot/dts/compulab/cl-som-imx8.dts b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
 new file mode 100644
-index 0000000..80abe3e
+index 00000000..80abe3ef
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/cl-som-imx8.dts
 @@ -0,0 +1,78 @@
@@ -567,7 +567,7 @@ index 0000000..80abe3e
 +};
 diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq-lvds-mipi.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq-lvds-mipi.dtsi
 new file mode 100644
-index 0000000..d2b695e
+index 00000000..d2b695e
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq-lvds-mipi.dtsi
 @@ -0,0 +1,73 @@
@@ -646,7 +646,7 @@ index 0000000..d2b695e
 +};
 diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-dcss.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-dcss.dtsi
 new file mode 100644
-index 0000000..3b76716
+index 00000000..3b76716
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-dcss.dtsi
 @@ -0,0 +1,60 @@
@@ -712,7 +712,7 @@ index 0000000..3b76716
 +};
 diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-lcdif.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-lcdif.dtsi
 new file mode 100644
-index 0000000..0820082
+index 00000000..0820082
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq-mipi-lcdif.dtsi
 @@ -0,0 +1,49 @@
@@ -767,7 +767,7 @@ index 0000000..0820082
 +};
 diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
 new file mode 100644
-index 0000000..edf394a
+index 00000000..edf394a
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq.dtsi
 @@ -0,0 +1,704 @@
@@ -1477,7 +1477,7 @@ index 0000000..edf394a
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sb-imx8.dtsi b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
 new file mode 100644
-index 0000000..b52dfc1
+index 00000000..b52dfc1
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sb-imx8.dtsi
 @@ -0,0 +1,193 @@
@@ -1676,7 +1676,7 @@ index 0000000..b52dfc1
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sb-ucm-imx8.dtsi b/arch/arm64/boot/dts/compulab/sb-ucm-imx8.dtsi
 new file mode 100644
-index 0000000..fe041c9
+index 00000000..fe041c9
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sb-ucm-imx8.dtsi
 @@ -0,0 +1,133 @@
@@ -1815,7 +1815,7 @@ index 0000000..fe041c9
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-bluetooth.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-bluetooth.dts
 new file mode 100644
-index 0000000..468aa39
+index 00000000..468aa39
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-bluetooth.dts
 @@ -0,0 +1,26 @@
@@ -1847,7 +1847,7 @@ index 0000000..468aa39
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-dcss.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-dcss.dts
 new file mode 100644
-index 0000000..db04d7c
+index 00000000..db04d7c
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-dcss.dts
 @@ -0,0 +1,36 @@
@@ -1889,7 +1889,7 @@ index 0000000..db04d7c
 +
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-lcdif.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-lcdif.dts
 new file mode 100644
-index 0000000..f779ba2
+index 00000000..f779ba2
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-lvds-lcdif.dts
 @@ -0,0 +1,35 @@
@@ -1930,7 +1930,7 @@ index 0000000..f779ba2
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-thermal.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-thermal.dts
 new file mode 100644
-index 0000000..b67eb19
+index 00000000..b67eb19
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-thermal.dts
 @@ -0,0 +1,14 @@
@@ -1950,7 +1950,7 @@ index 0000000..b67eb19
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8.dts b/arch/arm64/boot/dts/compulab/sbc-imx8.dts
 new file mode 100644
-index 0000000..51a2622
+index 00000000..51a2622
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8.dts
 @@ -0,0 +1,26 @@
@@ -1982,7 +1982,7 @@ index 0000000..51a2622
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-lvds.dts b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-lvds.dts
 new file mode 100644
-index 0000000..293d48a
+index 00000000..293d48a
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-lvds.dts
 @@ -0,0 +1,44 @@
@@ -2032,7 +2032,7 @@ index 0000000..293d48a
 +};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-wifi.dts b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-wifi.dts
 new file mode 100644
-index 0000000..45d89e4
+index 00000000..45d89e4
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8-wifi.dts
 @@ -0,0 +1,34 @@
@@ -2072,7 +2072,7 @@ index 0000000..45d89e4
 +
 diff --git a/arch/arm64/boot/dts/compulab/sbc-ucm-imx8.dts b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8.dts
 new file mode 100644
-index 0000000..bfec093
+index 00000000..bfec093
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-ucm-imx8.dts
 @@ -0,0 +1,21 @@
@@ -2099,7 +2099,7 @@ index 0000000..bfec093
 +};
 diff --git a/arch/arm64/boot/dts/compulab/ucm-imx8.dts b/arch/arm64/boot/dts/compulab/ucm-imx8.dts
 new file mode 100644
-index 0000000..c216054
+index 00000000..c216054
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/ucm-imx8.dts
 @@ -0,0 +1,58 @@

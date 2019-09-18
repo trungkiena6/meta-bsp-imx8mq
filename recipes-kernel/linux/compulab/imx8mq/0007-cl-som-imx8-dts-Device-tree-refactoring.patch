@@ -1,7 +1,7 @@
-From d058a4ff159fd57287e0eb975e07baf3d518842b Mon Sep 17 00:00:00 2001
+From 24e088c61c7c8781fd82a16e0cb2d993f36fcb72 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Thu, 21 Mar 2019 18:33:09 +0200
-Subject: [PATCH 07/15] cl-som-imx8: dts: Device tree refactoring
+Subject: [PATCH 07/34] cl-som-imx8: dts: Device tree refactoring
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -33,7 +33,7 @@ index 4953903..764c812 100644
  subdir-y	:= $(dts-dirs)
 diff --git a/arch/arm64/boot/dts/compulab/compulab-imx8mq-goodix.dtsi b/arch/arm64/boot/dts/compulab/compulab-imx8mq-goodix.dtsi
 new file mode 100644
-index 0000000..32648ef
+index 00000000..32648ef
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/compulab-imx8mq-goodix.dtsi
 @@ -0,0 +1,17 @@
@@ -72,7 +72,7 @@ index 0820082..ea0825d 100644
 -};
 diff --git a/arch/arm64/boot/dts/compulab/sbc-imx8-dual.dts b/arch/arm64/boot/dts/compulab/sbc-imx8-dual.dts
 new file mode 100644
-index 0000000..138b477
+index 00000000..138b477
 --- /dev/null
 +++ b/arch/arm64/boot/dts/compulab/sbc-imx8-dual.dts
 @@ -0,0 +1,18 @@

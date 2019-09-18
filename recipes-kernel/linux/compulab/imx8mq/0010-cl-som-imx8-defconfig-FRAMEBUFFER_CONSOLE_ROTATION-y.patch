@@ -1,7 +1,7 @@
-From c899d3064ddaaabd8e99810d8c03b4a89baa9329 Mon Sep 17 00:00:00 2001
+From d8aa9c844a0090bcffe456ad2c1b11578f3a69ad Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 5 Apr 2019 11:06:02 +0300
-Subject: [PATCH 10/15] cl-som-imx8: defconfig: FRAMEBUFFER_CONSOLE_ROTATION=y
+Subject: [PATCH 10/34] cl-som-imx8: defconfig: FRAMEBUFFER_CONSOLE_ROTATION=y
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

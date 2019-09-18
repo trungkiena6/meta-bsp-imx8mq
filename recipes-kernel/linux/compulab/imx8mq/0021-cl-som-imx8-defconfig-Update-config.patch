@@ -1,7 +1,7 @@
-From ad3319eb0f5a51dace64c85d2587f232865b4b2b Mon Sep 17 00:00:00 2001
+From 6a390f6785c230a578d89eae75236713590ad7b7 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 21 Jul 2019 17:20:41 +0300
-Subject: [PATCH 20/20] cl-som-imx8: defconfig: Update config
+Subject: [PATCH 21/34] cl-som-imx8: defconfig: Update config
 
 1) Change default governon to userspace
 2) Enable LCDIF_CORE

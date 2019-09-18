@@ -1,0 +1,89 @@
+From 11d2761507051e144ccf14d06398a94e95989d63 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Mon, 2 Sep 2019 15:14:19 +0300
+Subject: [PATCH 29/34] sn65dsi83: Refactoring with respect to datasheet
+
+1) Sleep 10 msec after power on
+2) Wait for PLL_EN_STAT to be 1
+3) Sleep 10 msec after PLL_EN
+4) Write 0xFF to CSR 0xE5 to clear the error registers
+5) Power off -> 10 ms sleep -> Power on at bridge setup
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c | 28 ++++++++++++++++++++++--
+ 1 file changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c
+index e9195fe..2d6ab37 100644
+--- a/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c
++++ b/drivers/gpu/drm/bridge/sn65dsi83/sn65dsi83_brg.c
+@@ -99,7 +99,7 @@ static int sn65dsi83_brg_power_on(struct sn65dsi83_brg *brg)
+     dev_info(&brg->client->dev,"%s\n",__func__);
+     gpiod_set_value_cansleep(brg->gpio_enable, 1);
+     /* Wait for 1ms for the internal voltage regulator to stabilize */
+-    msleep(1);
++    msleep(10);
+ 
+     return 0;
+ }
+@@ -148,24 +148,40 @@ static int sn65dsi83_read(struct i2c_client *client, u8 reg)
+ }
+ #define SN65DSI83_READ(reg) sn65dsi83_read(client, (reg))
+ 
++static int _sn65dsi83_brg_setup(struct sn65dsi83_brg *brg);
+ static int sn65dsi83_brg_start_stream(struct sn65dsi83_brg *brg)
+ {
+-    int regval;
++    int regval = 1;
+     struct i2c_client *client = I2C_CLIENT(brg);
+ 
+     dev_info(&client->dev,"%s\n",__func__);
++    while ( regval ) {
++        regval = _sn65dsi83_brg_setup(brg);
++        if (regval)
++            return regval;
+     /* Set the PLL_EN bit (CSR 0x0D.0) */
+     SN65DSI83_WRITE(SN65DSI83_PLL_EN, 0x1);
+     /* Wait for the PLL_LOCK bit to be set (CSR 0x0A.7) */
++    while (!(regval & (1<<7))) {
++        regval = SN65DSI83_READ(SN65DSI83_CORE_PLL);
++        dev_info(&client->dev,"%s [ wait for pll 0x%x ]\n",__func__,regval);
++        msleep(1);
++    }
+     msleep(200);
+ 
++    /* Write 0xFF to CSR 0xE5 to clear the error registers */
++    SN65DSI83_WRITE(SN65DSI83_CHA_ERR,0xFF);
++    msleep(1);
++
+     /* Perform SW reset to apply changes */
+     SN65DSI83_WRITE(SN65DSI83_SOFT_RESET, 0x01);
++    msleep(10);
+ 
+     /* Read CHA Error register */
+     regval = SN65DSI83_READ(SN65DSI83_CHA_ERR);
+     dev_info(&client->dev, "CHA (0x%02x) = 0x%02x",
+          SN65DSI83_CHA_ERR, regval);
++    }
+ 
+     if (!IS_ERR(brg->gpio_panel_enable))
+         gpiod_set_value_cansleep(brg->gpio_panel_enable, 1);
+@@ -359,6 +375,14 @@ static int sn65dsi83_brg_setup(struct sn65dsi83_brg *brg)
+ {
+     struct i2c_client *client = I2C_CLIENT(brg);
+     dev_info(&client->dev,"%s\n",__func__);
++    return 0;
++}
++
++static int _sn65dsi83_brg_setup(struct sn65dsi83_brg *brg)
++{
++    struct i2c_client *client = I2C_CLIENT(brg);
++    dev_info(&client->dev,"%s\n",__func__);
++    sn65dsi83_brg_power_off(brg);
+     sn65dsi83_brg_power_on(brg);
+     return sn65dsi83_brg_configure(brg);
+ }
+-- 
+1.9.1
+

@@ -1,7 +1,7 @@
-From 4cfd7e9c852931babb0b25dcebfe1aef502c6479 Mon Sep 17 00:00:00 2001
+From 90ffa19b8de21fed9ce63a2fe4d5b9b0769d2086 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 5 Apr 2019 20:09:18 +0300
-Subject: [PATCH 12/15] imx: hdp: Added user defined video modes
+Subject: [PATCH 12/34] imx: hdp: Added user defined video modes
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---
@@ -9,7 +9,7 @@ Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
  1 file changed, 21 insertions(+)
 
 diff --git a/drivers/gpu/drm/imx/hdp/imx-hdp.c b/drivers/gpu/drm/imx/hdp/imx-hdp.c
-index bcfad52..26d96c0 100644
+index e21c72c..ea1174a 100644
 --- a/drivers/gpu/drm/imx/hdp/imx-hdp.c
 +++ b/drivers/gpu/drm/imx/hdp/imx-hdp.c
 @@ -34,6 +34,21 @@

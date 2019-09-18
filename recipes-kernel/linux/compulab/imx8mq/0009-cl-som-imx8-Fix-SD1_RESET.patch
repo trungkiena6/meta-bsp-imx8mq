@@ -1,7 +1,7 @@
-From 399f4fb07aafa63a9537807509dac082139d3655 Mon Sep 17 00:00:00 2001
+From 0471c071ccccb86938f81d3c2438050375fb6287 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Wed, 3 Apr 2019 13:57:14 +0300
-Subject: [PATCH 09/15] cl-som-imx8: Fix SD1_RESET
+Subject: [PATCH 09/34] cl-som-imx8: Fix SD1_RESET
 
 Make the SD1_RESET work the same way as the SD2_RESET.
 Now it defined in a separate group and handled as a regulator-fixed.
