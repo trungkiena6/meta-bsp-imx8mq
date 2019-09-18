@@ -1,7 +1,7 @@
-From 77e62da0f7fd90a716b0681f39cc5ca972bef0e4 Mon Sep 17 00:00:00 2001
+From b058ee36cc01c4cc047b5b943f2d8c1dd39309e4 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 22 Mar 2019 20:17:35 +0200
-Subject: [PATCH 3/8] cl-som-imx8: Update Android support
+Subject: [PATCH 03/23] cl-som-imx8: Update Android support
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

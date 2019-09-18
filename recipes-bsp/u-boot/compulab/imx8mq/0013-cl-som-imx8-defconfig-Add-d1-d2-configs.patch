@@ -1,7 +1,7 @@
-From 0ae63369c518de4cabf2739d8feb3e554cb6e027 Mon Sep 17 00:00:00 2001
+From 84d1b1963d19b44dc75b57c87a7c3efbc43543e2 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Tue, 2 Jul 2019 15:49:12 +0300
-Subject: [PATCH 13/13] cl-som-imx8: defconfig: Add d1/d2 configs
+Subject: [PATCH 13/23] cl-som-imx8: defconfig: Add d1/d2 configs
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

@@ -1,7 +1,7 @@
-From 379bfa516bbd3f901b5aad78b09d57d5d91bcc17 Mon Sep 17 00:00:00 2001
+From d133f3ac3fe54b86e4d56929d5953566328d799b Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 28 Jul 2019 14:12:34 +0300
-Subject: [PATCH 15/15] cl-som-imx8: defconfig: Disable TMU
+Subject: [PATCH 15/23] cl-som-imx8: defconfig: Disable TMU
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

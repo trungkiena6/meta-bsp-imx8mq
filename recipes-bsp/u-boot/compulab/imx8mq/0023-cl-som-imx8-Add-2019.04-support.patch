@@ -1,0 +1,240 @@
+From d1c62f9d151abcb0822f7648cdd2fb86f2c2e9c9 Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Wed, 18 Sep 2019 23:54:38 +0300
+Subject: [PATCH 23/23] cl-som-imx8: Add 2019.04 support
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ arch/arm/dts/cl-som-imx8.dts                      | 85 -----------------------
+ arch/arm/mach-imx/imx8m/Kconfig                   |  4 +-
+ board/compulab/cl-som-imx8/ddr/lpddr4_timing_1g.c |  2 +-
+ board/compulab/cl-som-imx8/ddr/lpddr4_timing_2g.c |  2 +-
+ configs/cl-som-imx8_defconfig                     | 14 ++--
+ include/configs/cl-som-imx8.h                     |  4 +-
+ 6 files changed, 13 insertions(+), 98 deletions(-)
+
+diff --git a/arch/arm/dts/cl-som-imx8.dts b/arch/arm/dts/cl-som-imx8.dts
+index b59ad01..76847a2 100644
+--- a/arch/arm/dts/cl-som-imx8.dts
++++ b/arch/arm/dts/cl-som-imx8.dts
+@@ -65,38 +65,6 @@
+ 		};
+ 	};
+ 
+-	simple_sound: sound {
+-		compatible = "simple-audio-card";
+-		simple-audio-card,name = "cl-som-imx8";
+-		simple-audio-card,widgets =
+-			"Headphone", "Headphone Jack",
+-			"Line", "Line Out",
+-			"Microphone", "Mic Jack",
+-			"Line", "Line In";
+-		simple-audio-card,routing =
+-			"Headphone Jack", "RHPOUT",
+-			"Headphone Jack", "LHPOUT",
+-			"MICIN", "Mic Bias",
+-			"Mic Bias", "Mic Jack";
+-		simple-audio-card,format = "i2s";
+-		simple-audio-card,bitclock-master = <&sound_master>;
+-		simple-audio-card,frame-master = <&sound_master>;
+-		simple-audio-card,bitclock-inversion;
+-
+-		sound_master: simple-audio-card,cpu {
+-			sound-dai = <&sai2>;
+-			system-clock-frequency = <0>;
+-			system-clock-direction = "out";
+-		};
+-
+-		simple-audio-card,codec {
+-			sound-dai = <&wm8731>;
+-			system-clock-direction = "in";
+-			system-clock-type = "mclk";
+-		};
+-
+-	};
+-
+ 	pwmleds {
+ 		compatible = "pwm-leds";
+ 
+@@ -481,28 +449,6 @@
+ 
+ };
+ 
+-#if 0
+-&pcie0{
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_pcie0>;
+-	clkreq-gpio = <&gpio5 20 GPIO_ACTIVE_LOW>;
+-	disable-gpio = <&gpio5 29 GPIO_ACTIVE_LOW>;
+-	reset-gpio = <&gpio5 28 GPIO_ACTIVE_LOW>;
+-	status = "okay";
+-};
+-#endif
+-
+-&pcie1{
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_pcie1>;
+-	clkreq-gpio = <&gpio1 2 GPIO_ACTIVE_LOW>;   /* pin#39 */
+-	disable-gpio = <&gpio4 29 GPIO_ACTIVE_LOW>; /* pin#41 */
+-	reset-gpio = <&gpio1 1 GPIO_ACTIVE_LOW>;    /* pin#23 */
+-	ext_osc = <0>;
+-	hard-wired = <1>;
+-	status = "okay";
+-};
+-
+ &pwm2 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_pwm2>;
+@@ -575,33 +521,6 @@
+ 	dr_mode = "host";
+ };
+ 
+-&sai2 {
+-	#sound-dai-cells = <0>;
+-	pinctrl-names = "default";
+-	pinctrl-0 = <&pinctrl_sai2>;
+-	assigned-clocks = <&clk IMX8MQ_CLK_SAI2_SRC>,
+-			<&clk IMX8MQ_CLK_SAI2_DIV>;
+-	assigned-clock-parents = <&clk IMX8MQ_AUDIO_PLL1_OUT>;
+-	assigned-clock-rates = <0>, <24576000>;
+-	status = "okay";
+-};
+-
+-&sai4 {
+-	assigned-clocks = <&clk IMX8MQ_CLK_SAI4_SRC>,
+-			<&clk IMX8MQ_CLK_SAI4_DIV>;
+-	assigned-clock-parents = <&clk IMX8MQ_AUDIO_PLL1_OUT>;
+-	assigned-clock-rates = <0>, <24576000>;
+-	status = "okay";
+-};
+-
+-&gpu {
+-	status = "okay";
+-};
+-
+-&vpu {
+-	status = "okay";
+-};
+-
+ &wdog1 {
+ 	pinctrl-names = "default";
+ 	pinctrl-0 = <&pinctrl_wdog>;
+@@ -609,10 +528,6 @@
+ 	status = "okay";
+ };
+ 
+-&mu {
+-	status = "okay";
+-};
+-
+ &cpu_alert0 {
+ 	temperature = <125000>;
+ };
+diff --git a/arch/arm/mach-imx/imx8m/Kconfig b/arch/arm/mach-imx/imx8m/Kconfig
+index b8464e6..8a2704d 100644
+--- a/arch/arm/mach-imx/imx8m/Kconfig
++++ b/arch/arm/mach-imx/imx8m/Kconfig
+@@ -58,9 +58,9 @@ config TARGET_IMX8MM_DDR4_EVK
+ 	select IMX8M_DDR4
+ 
+ config TARGET_COMPULAB_IMX8
+-	bool "Compulab imx8m"
++	bool "Compulab imx8mq"
+ 	select IMX8MQ
+-	select SUPPORT_SPL
++	select IMX8M_LPDDR4
+ 
+ endchoice
+ 
+diff --git a/board/compulab/cl-som-imx8/ddr/lpddr4_timing_1g.c b/board/compulab/cl-som-imx8/ddr/lpddr4_timing_1g.c
+index 4b2cd0f..2e64f52 100644
+--- a/board/compulab/cl-som-imx8/ddr/lpddr4_timing_1g.c
++++ b/board/compulab/cl-som-imx8/ddr/lpddr4_timing_1g.c
+@@ -8,7 +8,7 @@
+  */
+ 
+ #include <linux/kernel.h>
+-#include <asm/arch/imx8m_ddr.h>
++#include <asm/arch/ddr.h>
+ 
+ static struct dram_cfg_param ddr_ddrc_cfg[] = {
+ 	/** Initialize DDRC registers **/
+diff --git a/board/compulab/cl-som-imx8/ddr/lpddr4_timing_2g.c b/board/compulab/cl-som-imx8/ddr/lpddr4_timing_2g.c
+index 9173c57..c5597de 100644
+--- a/board/compulab/cl-som-imx8/ddr/lpddr4_timing_2g.c
++++ b/board/compulab/cl-som-imx8/ddr/lpddr4_timing_2g.c
+@@ -8,7 +8,7 @@
+  */
+ 
+ #include <linux/kernel.h>
+-#include <asm/arch/imx8m_ddr.h>
++#include <asm/arch/ddr.h>
+ 
+ static struct dram_cfg_param ddr_ddrc_cfg[] = {
+ 	/** Initialize DDRC registers **/
+diff --git a/configs/cl-som-imx8_defconfig b/configs/cl-som-imx8_defconfig
+index 83acc3b..238fee9 100644
+--- a/configs/cl-som-imx8_defconfig
++++ b/configs/cl-som-imx8_defconfig
+@@ -3,20 +3,20 @@ CONFIG_ARCH_IMX8M=y
+ CONFIG_SYS_TEXT_BASE=0x40200000
+ CONFIG_SYS_MALLOC_F_LEN=0x2000
+ CONFIG_TARGET_COMPULAB_IMX8=y
++CONFIG_SPL_SERIAL_SUPPORT=y
++CONFIG_SPL=y
+ CONFIG_IMX_OPTEE=y
+-CONFIG_DEFAULT_DEVICE_TREE="cl-som-imx8"
+ CONFIG_LOCALVERSION="-cl-som-imx8-rev1.1-1.1-CFG"
++CONFIG_NR_DRAM_BANKS=1
+ CONFIG_FIT=y
++CONFIG_FIT_EXTERNAL_OFFSET=0x3000
+ CONFIG_SPL_LOAD_FIT=y
+-CONFIG_SYS_EXTRA_OPTIONS="IMX_CONFIG=arch/arm/mach-imx/spl_sd.cfg"
++CONFIG_SPL_FIT_GENERATOR="arch/arm/mach-imx/mkimage_fit_atf.sh"
++CONFIG_SYS_EXTRA_OPTIONS="IMX_CONFIG=arch/arm/mach-imx/imx8m/imximage.cfg"
+ CONFIG_DEFAULT_FDT_FILE="sbc-imx8.dtb"
+ CONFIG_ARCH_MISC_INIT=y
+-CONFIG_SPL=y
+ CONFIG_SPL_BOARD_INIT=y
+ CONFIG_HUSH_PARSER=y
+-CONFIG_CMD_EEPROM=y
+-CONFIG_CMD_EEPROM_LAYOUT=y
+-CONFIG_EEPROM_LAYOUT_HELP_STRING="v2, v3, v4"
+ CONFIG_CMD_MEMINFO=y
+ CONFIG_CMD_MEMTEST=y
+ CONFIG_CMD_GPIO=y
+@@ -30,8 +30,8 @@ CONFIG_CMD_EXT4_WRITE=y
+ CONFIG_CMD_FAT=y
+ CONFIG_CMD_FS_GENERIC=y
+ CONFIG_OF_CONTROL=y
++CONFIG_DEFAULT_DEVICE_TREE="cl-som-imx8"
+ CONFIG_ENV_IS_IN_MMC=y
+-CONFIG_IMX8M_LPDDR4=y
+ CONFIG_SAVED_DRAM_TIMING_BASE=0x40000000
+ CONFIG_DM_GPIO=y
+ CONFIG_DM_I2C=y
+diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
+index dbdc3e4..568bdcf 100644
+--- a/include/configs/cl-som-imx8.h
++++ b/include/configs/cl-som-imx8.h
+@@ -32,7 +32,7 @@
+ #define CONFIG_SPL_STACK		0x187FF0
+ #define CONFIG_SPL_LIBCOMMON_SUPPORT
+ #define CONFIG_SPL_LIBGENERIC_SUPPORT
+-#define CONFIG_SPL_SERIAL_SUPPORT
++/*#define CONFIG_SPL_SERIAL_SUPPORT*/
+ #define CONFIG_SPL_GPIO_SUPPORT
+ #define CONFIG_SPL_MMC_SUPPORT
+ #define CONFIG_SPL_BSS_START_ADDR      0x00180000
+@@ -153,7 +153,7 @@
+ #define CONFIG_SYS_SDRAM_BASE           0x40000000
+ #define PHYS_SDRAM                      0x40000000
+ #define PHYS_SDRAM_SIZE			0x80000000 /* 2GB DDR */
+-#define CONFIG_NR_DRAM_BANKS		1
++/* #define CONFIG_NR_DRAM_BANKS		1*/
+ 
+ #define CONFIG_SYS_MEMTEST_START    PHYS_SDRAM
+ #define CONFIG_SYS_MEMTEST_END      (CONFIG_SYS_MEMTEST_START + (PHYS_SDRAM_SIZE >> 1))
+-- 
+1.9.1
+

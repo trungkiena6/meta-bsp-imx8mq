@@ -1,7 +1,7 @@
-From c19c6ea28ff5fed253005d37afc8c08d852d4ab7 Mon Sep 17 00:00:00 2001
+From b4e53f6b8cfcdccf27d3da9557e57f485d9b4230 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Sun, 7 Apr 2019 17:17:27 +0300
-Subject: [PATCH 4/8] cl-som-imx8: Fix usb support
+Subject: [PATCH 04/23] cl-som-imx8: Fix usb support
 
 Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
 ---

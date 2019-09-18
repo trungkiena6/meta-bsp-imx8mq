@@ -17,5 +17,11 @@ SRC_URI_append_cl-som-imx8 = " \
 	file://0015-cl-som-imx8-defconfig-Disable-TMU.patch \
 	file://0016-CL-SOM-iMX8-Enable-LED.patch \
 	file://0017-Enable-eeprom-cmd.patch \
+	file://0018-cl-som-imx8-Kconfig-Fix-the-Kconfig-location.patch \
+	file://0019-cl-som-imx8-defconfig-Update-all-configs.patch \
+	file://0020-cl-som-imx8-env-Update-default-boot-environment.patch \
+	file://0021-cl-som-imx8-env-Change-the-environment-offset.patch \
+	file://0022-cl-som-imx8-envtools-Add-print-default-fw_env.config.patch \
+	file://0023-cl-som-imx8-Add-2019.04-support.patch \
 	file://cl-som-imx8_defconfig \
 "

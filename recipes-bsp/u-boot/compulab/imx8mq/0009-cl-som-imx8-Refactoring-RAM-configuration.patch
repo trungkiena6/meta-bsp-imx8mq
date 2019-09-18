@@ -1,7 +1,7 @@
-From d3904d1acfe784fff5e8b9e89bedc7c359b13225 Mon Sep 17 00:00:00 2001
+From df1265a5813c6294fadfa45c9cfe7e8125590787 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Tue, 2 Jul 2019 07:43:18 +0300
-Subject: [PATCH 09/12] cl-som-imx8: Refactoring RAM configuration
+Subject: [PATCH 09/23] cl-som-imx8: Refactoring RAM configuration
 
 Refactoring RAM configuration.
 

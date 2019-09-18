@@ -1,7 +1,7 @@
-From 39a556c9ea9bf384b74ab3934441f860e424b5f1 Mon Sep 17 00:00:00 2001
+From 70f80a569dffaf74d35da90aa5b86e6431e258b6 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Mon, 1 Jul 2019 22:24:36 +0300
-Subject: [PATCH 11/12] cl-som-imx8: defconfig: Enable USB ethernet
+Subject: [PATCH 11/23] cl-som-imx8: defconfig: Enable USB ethernet
 
 Added:
 CONFIG_USB_HOST_ETHER=y

@@ -1,0 +1,26 @@
+From 9640f4e2dd77e93f44e119ffaf8da0abb968340b Mon Sep 17 00:00:00 2001
+From: Valentin Raevsky <valentin@compulab.co.il>
+Date: Fri, 13 Sep 2019 22:50:06 +0300
+Subject: [PATCH 21/23] cl-som-imx8: env: Change the environment offset
+
+Signed-off-by: Valentin Raevsky <valentin@compulab.co.il>
+---
+ include/configs/cl-som-imx8.h | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/include/configs/cl-som-imx8.h b/include/configs/cl-som-imx8.h
+index a50106e..dbdc3e4 100644
+--- a/include/configs/cl-som-imx8.h
++++ b/include/configs/cl-som-imx8.h
+@@ -142,7 +142,7 @@
+         (CONFIG_SYS_INIT_RAM_ADDR + CONFIG_SYS_INIT_SP_OFFSET)
+ 
+ #define CONFIG_ENV_OVERWRITE
+-#define CONFIG_ENV_OFFSET               (64 * SZ_64K)
++#define CONFIG_ENV_OFFSET               0x4000
+ #define CONFIG_ENV_SIZE			0x1000
+ #define CONFIG_SYS_MMC_ENV_DEV		0   /* USDHC1/eMMC */
+ #define CONFIG_MMCROOT			"/dev/mmcblk0p2"  /* USDHC1 */
+-- 
+1.9.1
+

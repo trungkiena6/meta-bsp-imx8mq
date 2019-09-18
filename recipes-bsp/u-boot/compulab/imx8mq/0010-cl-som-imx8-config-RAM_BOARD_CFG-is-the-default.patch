@@ -1,7 +1,7 @@
-From fc650c5592f53d6b1837d0201f2de5e359bb06d8 Mon Sep 17 00:00:00 2001
+From e73a7788e4b74b907e968a33a3c38b497760b184 Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Mon, 1 Jul 2019 22:21:57 +0300
-Subject: [PATCH 10/12] cl-som-imx8: config: RAM_BOARD_CFG is the default
+Subject: [PATCH 10/23] cl-som-imx8: config: RAM_BOARD_CFG is the default
 
 Make the RAM_BOARD_CFG is the default RAM configuration.
 RAM_BOARD_CFG & P20.15 connected to GND =  RAM_2G.

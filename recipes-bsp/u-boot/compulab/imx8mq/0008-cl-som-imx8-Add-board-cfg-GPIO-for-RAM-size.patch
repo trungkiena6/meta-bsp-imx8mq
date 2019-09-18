@@ -1,7 +1,7 @@
-From dc14bcdb96e95000833a68caa3001c1f6ad31afe Mon Sep 17 00:00:00 2001
+From 02408fc0f8e53283d4dce256c508504aa939421c Mon Sep 17 00:00:00 2001
 From: Valentin Raevsky <valentin@compulab.co.il>
 Date: Fri, 28 Jun 2019 12:06:33 +0300
-Subject: [PATCH 8/8] cl-som-imx8: Add board cfg GPIO for RAM size
+Subject: [PATCH 08/23] cl-som-imx8: Add board cfg GPIO for RAM size
 
 !!!ATP/Production use only!!!
 
