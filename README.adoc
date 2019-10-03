@@ -1,25 +1,24 @@
 # Quick Start Guide
 
+this is a development branch, is not officially released by CompuLab.
+
 ## Supported CompuLab Machines
 
 * `cl-som-imx8`
 
 # Prepare NXP BSP
 [source,console]
-repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-sumo -m imx-4.14.98-2.0.0_ga.xml
+repo init -u git://source.codeaurora.org/external/imx/imx-manifest.git -b imx-linux-thud -m imx-4.19.35-1.0.0.xml
 repo sync
 
 # Download CompuLab meta layer
 [source,console]
-git clone -b master https://github.com/compulab-yokneam/meta-bsp-imx8mq.git sources/meta-bsp-imx8mq/
+git clone -b devel-thud https://github.com/compulab-yokneam/meta-bsp-imx8mq.git sources/meta-bsp-imx8mq/
 
 # Set a desire machine
 * `cl-som-imx8`
 [source,console]
 COMPULAB_MACHINE=cl-som-imx8
-
-# Build Images
-Refer to the http://source.codeaurora.org/external/imx/meta-fsl-bsp-release/tree/imx/README?h=sumo-4.14.98-2.0.0_ga[`NXP Readme`] for details about how to select a correct `backend` & `distro`.
 
 ## imx8mq
 This example shows how to build an NXP supported image for the `${COMPULAB_MACHINE}`
@@ -48,5 +47,3 @@ fw_setenv fdt_file sbc-imx8-bluetooth.dtb
 
 NOTE: In `Linux` boot environment device defined by the `/etc/fw_env.config` file.
 
-## Pre- built image
-* https://drive.google.com/drive/folders/1k_nFGZpbbUXt3tlqD0Exwok9bnSC-zc5[XWayland Qt5 Image & readme.txt]
